@@ -10,9 +10,184 @@
 </head>
 
 <body>
-    <div>
-
+    <div class="title">
+        <h1>WELCOME TO RATIO CLUB</h1>
     </div>
+    <div class="title" id="subtitle">
+        <h2>Week2:
+            <h3>
+                Animation & Repetition,
+                <br>Interaction & Repetition
+            </h3>
+        </h2>
+    </div>
+    <div class="border">
+        <ul>
+            <h3>Key Concepts:</h3>
+            <li>Basics of Animation</li>
+            <li>If Statements</li>
+            <li>For Loops & While Loops</li>
+            <li>Basics of Interaction</li>
+        </ul>
+    </div>
+    <div class="title">
+        <h2>
+            Introducing Movement
+        </h2>
+    </div>
+    <p>
+        How do we make things move?<br>By changing something <strong>incrementally</strong> from one frame to the next.
+    </p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            x++;
+            <br>
+            <br><i>~ aka ~</i>
+            <br>
+            <br>x += 1;
+            <br>
+            <br><i>~ aka ~</i>
+            <br>
+            <br>x = x + 1;
+        </p>
+    </div>
+    <p>But what does this mean and what does it do?</p>
+    <p>
+        All three of these lines do the same thing:
+    </p>
+    <div class="border">
+        <ul>
+            <li>They take the value of variable <i>x</i></li>
+            <li>add 1 to whatever it was</li>
+            <li>then save this new value back into in variable <i>x</i>.</li>
+        </ul>
+    </div>
+    <p>if you do this every <strong>frame</strong>,<br>you have animation.</p>
+    <p>for example:</p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            var x;
+            <br>
+            <br>function setup(){
+            <br>&emsp;createCanvas(960, 720);
+            <br>&emsp;x = 0;
+            <br>}
+            <br>
+            <br>function draw(){
+            <br>&emsp;background(0, 0, 255);
+            <br>&emsp;fill(255, 0, 0);
+            <br>&emsp;ellipse(x, 360, 300, 300);
+            <br>&emsp;x++;
+            <br>}
+        </p>
+    </div>
+    <p>
+        This is the exact same code as last week,
+        <br>except now the circle moves horizontally to the right.
+    </p>
+    <p>
+        By increasing of decreasing the size that we increment x by,
+        <br>we can speed up or slow down the circle:
+    </p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            x = x + 5;
+            <br>
+            <br>var speed = 0.2;
+            <br>x += speed;
+        </p>
+    </div>
+    <p>However, if you try this code you will see there is a problem...</p>
+    <div class="title">
+        <h2>if / else if / else</h2>
+    </div>
+    <p>
+        Under what conditions do we want the circle to move right,
+        <br> and when do we want it to move left instead?
+    </p>
+    <p>
+        To make the circle bounce off the edge of the screen,
+        <br>we must reverse the direction when the ball is <strong>at</strong> the edge of the screen.
+    </p>
+    <p>
+        We can do this with an <strong>'if / else' statement</strong>:
+    </p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            if ( x &gt; 960 ){
+            <br>&emsp;speed *= -1;
+            <br>}
+            <br>else if ( x &lt; 0 ) {
+            <br>&emsp;speed *= -1;
+            <br>}
+        </p>
+    </div>
+    <p>This allows us to give the circle logical rules to follow.<br>These are called Conditional Statements.</p>
+    <p>Conditional Statements operate <strong>in order</strong>:</p>
+    <img src="http://2.bp.blogspot.com/-RztMkL0ZO_c/Uuyh1tV6fKI/AAAAAAAAAl4/LQCQ8PgRvqI/s1600/perl-if-elsif-else.png">
+    <p>Like so.</p>
+    <div class="title">
+        <h2>For Loops</h2>
+    </div>
+    <p>
+        What if we want to draw 6 circles?
+    </p>
+    <p>We could call 6 ellipses:</p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            fill(0, 255, 0);
+            <br>ellipse(0, 0, 100, 100);
+            <br>ellipse(100, 100, 100, 100);
+            <br>ellipse(200, 200, 100, 100);
+            <br>ellipse(300, 300, 100, 100);
+            <br>ellipse(400, 400, 100, 100);
+            <br>ellipse(500, 500, 100, 100);
+        </p>
+    </div>
+    <p>but this is labourious and we are lazy.</p>
+    <p>Instead, we use a <strong>for loop</strong>:</p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            fill(0, 255, 0);
+            <br>
+            <br>for(var i = 0; i &lt; 6; i++){
+            <br>ellipse(100*i, 100*i, 100, 100);
+            <br>} </p>
+    </div>
+    <p>But what is actually happening here?<br>Let's break it down:</p>
+    <div class="border">
+        <ul>
+            <h3>using the keyword <strong>for</strong></h3>
+            <li>
+                first we make a new variable called <strong>i</strong> and make it equal to 0
+                <br>&emsp;&emsp;<span class="codeSnippet">var i = 0;</span>
+            </li>
+            <li>
+                then we create a condition for when the end the loop
+                <br>&emsp;&emsp;<span class="codeSnippet">i < 6;</span>
+            </li>
+            <li>
+                then we say what should happen at the end of every time we run through the loop
+                <br>&emsp;&emsp;<span class="codeSnippet">i++;</span>
+            </li>
+            <li>the code in { } is the code that is executed during the loop.</li>
+        </ul>
+    </div>
+
+
+
+
+
+    <div></div>
+    <hr>
+    <footer>
+        <h6 class='serif'>
+            This project has been assisted by the Australian Government through the Australia Council for the Arts, its arts funding and advisory body.
+            <br>
+            <br> Ratio Club is a partnership between Free Wifi and the always awesome Maker + Co.
+        </h6>
+        <img src="../../Maker logo.png" class="maker">
+    </footer>
 </body>
 
 </html>

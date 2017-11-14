@@ -23,7 +23,7 @@ p.keyItem {
     font-size: 24pt;
 }
 
-p.codeSnippet {
+.codeSnippet {
     text-align: left;
     font-family: "Roboto Mono";
     font-weight: bold;
@@ -99,6 +99,11 @@ div.title {
     padding-left: 25%;
     padding-right: 25%;
     font: inherit;
+}
+
+div #subtitle {
+    background: #fff;
+    width: auto;
 }
 
 .fade {
