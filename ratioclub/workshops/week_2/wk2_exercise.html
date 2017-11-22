@@ -8,28 +8,33 @@
 
 <body>
     <script>
-        var a;
-        var b;
+        var flower_a;
+        var flower_b;
 
         function setup() {
-            createCanvas(960, 720);
+            flower_a = Object.create(flower);
+            flower_b = Object.create(flower);
 
-            a = Object.create(flower);
-            b = Object.create(flower);
-            a.x = 480 + 150;
-            b.x = 480 - 150;
+            // flower_a.x = Math.random(width);
+            // flower_a.y = Math.random(height);
+            // flower_b.x = Math.random(width);
+            // flower_b.y = Math.random(height);
+            flower_a.x = 200;
+            flower_b.x = 100;
+            createCanvas(960, 720); // Create Canvas in HTML
         }
 
         function draw() {
             background(0, 0, 255); // What happens if you put the background in Setup()?
-
-            a.draw();
-            b.draw();
+            flower_a.draw();
+            flower_b.draw();
         }
 
         var flower = {
-            x: 480,
-            y: 360,
+            x: 50,
+            y: 50,
+            horizontal: 5,
+            vertical: 2,
             petalSize: [200, 150],
             petalColour: [255, 0, 0],
             centerSize: 200,
@@ -48,11 +53,29 @@
                 fill(255, 200, 0);
                 ellipse(this.x, this.y, this.centerSize, this.centerSize);
             },
+            move: function() {
+                this.x += this.horizontal;
+                this.y += this.vertical;
+            },
+            bounce: function() {
+                if (this.x > width) {
+                    this.horizontal *= -1;
+                } else if (this.x < 0) { // Right Side
+                    this.horizontal *= -1; // Reverse direction
+                }
+
+                if (this.y > height) { // Bottom
+                    this.vertical *= -1; // Reverse direction
+                } else if (this.y < 0) { // Top
+                    this.vertical *= -1; // Reverse direction
+                }
+            },
             draw: function() {
                 this.stem();
                 this.petal();
+                this.move();
+                this.bounce();
             }
-
         }
     </script>
 </body>
