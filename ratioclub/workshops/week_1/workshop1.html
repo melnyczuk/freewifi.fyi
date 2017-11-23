@@ -8,50 +8,21 @@
 
 <body>
     <script>
-        var a;
-        var b;
-
         function setup() {
-            createCanvas(960, 720);
 
-            a = Object.create(flower);
-            b = Object.create(flower);
-            a.x = 480 + 150;
-            b.x = 480 - 150;
+            /* SET THINGS UP HERE! */
+
+            createCanvas(960, 720); // Creates a canvas 960px wide and 720px high
+            background(0, 0, 255); // Fills the background in blue
+
         }
 
         function draw() {
-            background(0, 0, 255); // What happens if you put the background in Setup()?
 
-            a.draw();
-            b.draw();
-        }
+            /* STARTING DRAWING HERE! */
 
-        var flower = {
-            x: 480,
-            y: 360,
-            petalSize: [200, 150],
-            petalColour: [255, 0, 0],
-            centerSize: 200,
-            stem: function() {
-                stroke(0, 255, 0);
-                strokeWeight(5);
-                line(480, 720, this.x, this.y);
-            },
-            petal: function() {
-                noStroke();
-                fill(this.petalColour[0], this.petalColour[1], this.petalColour[2]);
-                ellipse(this.x + (this.petalSize[0] / 2), this.y, this.petalSize[0], this.petalSize[1]);
-                ellipse(this.x - (this.petalSize[0] / 2), this.y, this.petalSize[0], this.petalSize[1]);
-                ellipse(this.x, this.y + (this.petalSize[0] / 2), this.petalSize[1], this.petalSize[0]);
-                ellipse(this.x, this.y - (this.petalSize[0] / 2), this.petalSize[1], this.petalSize[0]);
-                fill(255, 200, 0);
-                ellipse(this.x, this.y, this.centerSize, this.centerSize);
-            },
-            draw: function() {
-                this.stem();
-                this.petal();
-            }
+            fill(255, 0, 0); // Makes everything below it red
+            ellipse(480, 360, 300, 300); // Draws a circle with center x:480, y:360 and a radius of 300px
 
         }
     </script>

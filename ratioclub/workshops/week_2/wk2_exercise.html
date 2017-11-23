@@ -8,73 +8,43 @@
 
 <body>
     <script>
-        var flower_a;
-        var flower_b;
+        var x;
+        var y;
+        var horizontal;
+        var vertical;
 
         function setup() {
-            flower_a = Object.create(flower);
-            flower_b = Object.create(flower);
+            horizontal = 10; // Initialise horizontal velocity;
+            vertical = 8; // Intialise vertical velocity;
 
-            // flower_a.x = Math.random(width);
-            // flower_a.y = Math.random(height);
-            // flower_b.x = Math.random(width);
-            // flower_b.y = Math.random(height);
-            flower_a.x = 200;
-            flower_b.x = 100;
+            [x, y] = [10, 20]; // Initialises x & y at the same time using Array syntax;
+
             createCanvas(960, 720); // Create Canvas in HTML
         }
 
         function draw() {
             background(0, 0, 255); // What happens if you put the background in Setup()?
-            flower_a.draw();
-            flower_b.draw();
-        }
 
-        var flower = {
-            x: 50,
-            y: 50,
-            horizontal: 5,
-            vertical: 2,
-            petalSize: [200, 150],
-            petalColour: [255, 0, 0],
-            centerSize: 200,
-            stem: function() {
-                stroke(0, 255, 0);
-                strokeWeight(5);
-                line(480, 720, this.x, this.y);
-            },
-            petal: function() {
-                noStroke();
-                fill(this.petalColour[0], this.petalColour[1], this.petalColour[2]);
-                ellipse(this.x + (this.petalSize[0] / 2), this.y, this.petalSize[0], this.petalSize[1]);
-                ellipse(this.x - (this.petalSize[0] / 2), this.y, this.petalSize[0], this.petalSize[1]);
-                ellipse(this.x, this.y + (this.petalSize[0] / 2), this.petalSize[1], this.petalSize[0]);
-                ellipse(this.x, this.y - (this.petalSize[0] / 2), this.petalSize[1], this.petalSize[0]);
-                fill(255, 200, 0);
-                ellipse(this.x, this.y, this.centerSize, this.centerSize);
-            },
-            move: function() {
-                this.x += this.horizontal;
-                this.y += this.vertical;
-            },
-            bounce: function() {
-                if (this.x > width) {
-                    this.horizontal *= -1;
-                } else if (this.x < 0) { // Right Side
-                    this.horizontal *= -1; // Reverse direction
-                }
+            fill(255, 0, 0); // red
+            ellipse(x, y, 300, 300); // circle
 
-                if (this.y > height) { // Bottom
-                    this.vertical *= -1; // Reverse direction
-                } else if (this.y < 0) { // Top
-                    this.vertical *= -1; // Reverse direction
-                }
-            },
-            draw: function() {
-                this.stem();
-                this.petal();
-                this.move();
-                this.bounce();
+            /* PUT YOUR DRAWING HERE! */
+
+            // THIS MAKES THE CIRCLE MOVE
+            x += horizontal; // x moves with horizontal velocity
+            y += vertical; // y moves with vertical velocity
+
+            // THIS MAKES THE CIRCLE BOUNCE
+            if (x > width) { // Left side
+                horizontal *= -1; // Reverse direction
+            } else if (x < 0) { // Right Side
+                horizontal *= -1; // Reverse direction
+            }
+            // THIS ALSO MAKES THE CIRCLE BOUNCE
+            if (y > height) { // Bottom
+                vertical *= -1; // Reverse direction
+            } else if (y < 0) { // Top
+                vertical *= -1; // Reverse direction
             }
         }
     </script>
