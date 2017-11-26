@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Ratio Club Week 4
+    </title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Ratio Club workshop for DOM Manipulation with JavaScript">
+    <meta name="author" content="HPM">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../rt_workshops.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+
+</head>
+
+<body>
+    <div class="title">
+        <h1>WELCOME TO RATIO CLUB</h1>
+    </div>
+    <div class="title" id="subtitle">
+        <h2>Week 4:
+            <h3>Experiments in Structure
+            </h3>
+        </h2>
+    </div>
+    <div class="border">
+        <ul>
+            <h3>Key Concepts:</h3>
+            <li>DOM Manipulation</li>
+            <li>Loading External Resources</li>
+            <li>Using AJAX & Asynchronicity</li>
+        </ul>
+    </div>
+    <!-- DOM -->
+    <div class="title">
+        <h2>The Document Object Model</h2>
+    </div>
+    <p>The Document Object Model, or DOM, refers to the tree-like structure of a HTML document.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/DOM-model.svg/440px-DOM-model.svg.png" alt="DOM structure" id="DOM pic">
+    <p>Elements can be <strong>nested</strong> inside other Elements, creating a hierarchy.</p>
+    <div class="codeBlock">
+        <p class="codeSnippet">
+            &lt;body&gt;
+            <br>&emsp;&emsp;&lt;div&gt;
+            <br>&emsp;&emsp;&emsp;&emsp;&lt;p&gt;
+            <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;this is a paragraph of text,
+            <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;nested within a divider,
+            <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;nested inside the body.
+            <br>&emsp;&emsp;&emsp;&emsp;&lt;/p&gt;
+            <br>&emsp;&emsp;&lt;/div&gt;
+            <br>&lt;/body&gt;
+        </p>
+    </div>
+    <p>Elements nested within others are called <strong>Children</strong>,<br>and the Elements they are nested in are called <strong>Parents</strong>.</p>
+    <div class="title">
+        <h2>Element Attributes</h2>
+    </div>
+    <p>Elements can be given <strong>attributes</strong>, which hold <strong>values</strong>.</p>
+    <p>These include the <strong>style</strong> attribute for applying CSS styling,<br>the <strong>class</strong> attribute for grouping similar elements,<br>and the <strong>id</strong> attribute which is used to identify specific individual tags.</p>
+    <div class="codeBlock" style="padding-left:-10%;padding-right:-10%">
+        <p class="codeSnippet" style="font-size:18pt;margin-left:-10%;margin-right:-10%">
+            &lt;div style="width:100px" class="box" id="box101"&gt;
+        </p>
+    </div>
+    <p>These are applied within the HTML Tag.<br>Certain Tags have their own unique attributes,<br>but other attributes are applicable to all types of Tag.</p>
+    <p>Any <strong>id</strong> attribute should be given a unique value.</p>
+    <div class="title">
+        <h2>DOM Manipulation</h2>
+    </div>
+    <div class="title">
+        <h2>Creating Elements</h2>
+    </div>
+    <div class="title">
+        <h2>Altering Attributes</h2>
+    </div>
+    <!-- RESOURCES -->
+    <div class="title">
+        <h2>Modular Design</h2>
+    </div>
+    <div class="title">
+        <h2>File Paths & URLs</h2>
+    </div>
+    <div class="title">
+        <h2>Requests: Server & Client</h2>
+    </div>
+    <!-- EXERCISE -->
+    <div class="title">
+        <h2>EXERCISE</h2>
+    </div>
+    <p>Let's manipulate some DOM and load some resources!</p>
+    <div class="border">
+        <ul>
+            <h3>What to do:</h3>
+            <li>1.</li>
+        </ul>
+    </div>
+    <div class="exercise">
+        <a href="./event_listener_exercise.html" download>
+            <button type="button">
+            GET THE EXERCISE
+          </button>
+        </a>
+    </div>
+    <!-- AJAX -->
+    <div class="title">
+        <h2>Asynchronicity</h2>
+    </div>
+    <div class="title">
+        <h2>AJAX: Asynchronous JavaScript And XML</h2>
+    </div>
+    <!-- HOMEWORK -->
+    <div class="title">
+        <h2>Homework</h2>
+    </div>
+    <div class="border">
+        <ul>
+            <h3>Next Week: Making Generative Art</h3>
+            <li>Constructing Algorithms</li>
+            <li>Thinking in 3D</li>
+            <li>Introduction to THREE.js</li>
+        </ul>
+    </div>
+    <div></div>
+    <hr>
+    <footer>
+        <h6 class='serif'>
+            This project has been assisted by the Australian Government through the Australia Council for the Arts, its arts funding and advisory body.
+            <br>
+            <br> Ratio Club is a partnership between Free Wifi and the always awesome Maker + Co.
+        </h6>
+        <img src="../../Maker logo.png" class="maker">
+    </footer>
+</body>
+
+</html>
