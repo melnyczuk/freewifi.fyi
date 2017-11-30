@@ -2,15 +2,42 @@
 <html>
 
 <head>
-    <title>Ratio Club Week 4</title>
+    <title>
+        Ratio Club Week 4
+    </title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Ratio Club workshop for DOM Manipulation with JavaScript">
+    <meta name="author" content="HPM">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../rt_workshops.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+
 </head>
 
 <body>
+    <div class="title">
+        <h1>WELCOME TO RATIO CLUB</h1>
+    </div>
+    <div class="title" id="subtitle">
+        <h2>Week 4:
+            <h3>Experiments in Structure
+            </h3>
+        </h2>
+    </div>
+    <div class="border">
+        <ul>
+            <h3>Key Concepts:</h3>
+            <li>DOM Manipulation</li>
+            <li>Using AJAX & Asynchronicity</li>
+            <li>Installing Node & Local Servers</li>
 
-    <li>Loading External Resources</li>
-    </ul>
+        </ul>
     </div>
     <!-- DOM -->
     <div class="title">
@@ -19,7 +46,7 @@
     <p>The Document Object Model, or DOM, refers to the tree-like structure of a HTML document.</p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/DOM-model.svg/440px-DOM-model.svg.png" alt="DOM structure" id="DOM pic">
     <p>Elements can be <strong>nested</strong> inside other Elements, creating a hierarchy.</p>
-    <div class="codeBlock" id="thisOne">
+    <div class="codeBlock">
         <p class="codeSnippet">
             &lt;body&gt;
             <br>&emsp;&emsp;&lt;div&gt;
@@ -32,11 +59,6 @@
             <br>&lt;/body&gt;
         </p>
     </div>
-    <script>
-        var el = document.appendChild("img");
-        el.src = "https://www.royalcanin.com/~/media/Royal-Canin/Subpage-Hero-Images/150327_Hero_kit.ashx";
-        document.body.appendChild(el);
-    </script>
 
     <p>Elements nested within others are called <strong>Children</strong>,<br>and the Elements they are nested in are called <strong>Parents</strong>.</p>
     <div class="title">
@@ -44,7 +66,7 @@
     </div>
     <p>Elements can be given <strong>attributes</strong>, which hold <strong>values</strong>.</p>
     <p>These include the <strong>style</strong> attribute for applying CSS styling,<br>the <strong>class</strong> attribute for grouping similar elements,<br>and the <strong>id</strong> attribute which is used to identify specific individual tags.</p>
-    <div class="codeBlock" style="background:#FF0000">
+    <div class="codeBlock">
         <p class="codeSnippet">
             &lt;div style="width:100px" class="box" id="box101"&gt;
         </p>
