@@ -120,11 +120,11 @@ div #subtitle {
 div.codeBlock {
     background: #eee;
     margin-left: 25%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 600px;
+    width: 750px;
     height: auto;
 }
 
