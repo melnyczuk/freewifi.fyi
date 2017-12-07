@@ -1,18 +1,19 @@
 var osc = require("osc");
-var http = require('http');
-var WebSocket = require('ws');
+var http = require("http");
+var WebSocket = require("ws");
 var express = require("express");
 var app = express();
 var server = app.listen(8081);
 
-console.log("express server online");
 
-app.use("/", express.static(__dirname + "/static"));
+
+app.use("/", express.static(__dirname));
+// app.use(express.static('public'));
 
 var wss = new WebSocket.Server({
     server: server
 });
-
+console.log("express server online");
 // Listen for Web Socket connections.
 wss.on("connection", function(socket) {
     var socketPort = new osc.WebSocketPort({
@@ -23,7 +24,7 @@ wss.on("connection", function(socket) {
 
     var msg = '';
     var udpPort = new osc.UDPPort({
-        localAddress: "localhost",
+        localAddress: "192.168.1.151",
         localPort: 57110
     });
 
