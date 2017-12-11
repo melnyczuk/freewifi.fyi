@@ -158,7 +158,11 @@ div.exercise {
 }
 
 span {
-    font-size: 16pt
+    font-size: 16pt;
+}
+
+span .codeComment{
+  font-size: 14pt;
 }
 
 hr {
