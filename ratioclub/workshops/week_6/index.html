@@ -25,8 +25,8 @@
     <h1>WELCOME TO RATIO CLUB</h1>
   </div>
   <div class="title" id="subtitle">
-    <h2>Week 5
-      <h3>Nodes and Node.js: Small Parts & Modular Designs</h3>
+    <h2>Week 6
+      <h3>3D</h3>
     </h2>
   </div>
   <div class="border">
@@ -34,7 +34,6 @@
       <h3>Key Topics:</h3>
       <li>Three.js</li>
       <li>3D modelling</li>
-      <li></li>
     </ul>
   </div>
 
@@ -43,15 +42,15 @@
   </div>
   <p>Three.js is a javascript library designed to build interactive 3D scenes directly inside the browser. Everything is rendered
     on the
-    <strong>client side</strong>.</p>
-  <p>Like P5, everything is drawn inside a canvas element that Three creates for you. By default, this takes up the full size
-    of the window.</p>
-  <p>It allows us to make really complicated, fully interactive 3D animations that load on the audiences' computer almost instantly.</p>
-  <p>There is a distinct structure to how we do this:</p>
-  <img width="100%" src="http://davidscottlyons.com/threejs/presentations/frontporch14/images/node-map.png">
-  <p>Also like P5 we do all our coding in two functions:
-    <strong>init()</strong> and
-    <strong>animate()</strong>, but unlike P5 we must remember to call both of these to run our animation.</p>
+    <strong>client side</strong>. It allows us to make really complicated, fully interactive 3D animations that load on the audiences'
+    computer almost instantly.</p>
+  <p>Like P5, everything is drawn inside a canvas element that Three creates for you.</p>
+  <p>Also like P5 we do all our coding in two functions: </p>
+  <div class="codeBlock">
+    <p class="keyItem">init()
+      <br>animate()</p>
+  </div>
+  <p>However, unlike P5 we must remember to call both of these ourselves to run our animation.</p>
   <div class="codeBlock">
     <p class="codeSnippet">
       init();
@@ -70,11 +69,29 @@
       <br>}
     </p>
   </div>
+  <p>The mechanics of Three.js has a distinct structure that we have to build up with our code. At first it may seem complicated
+    but it makes a lot of sense and is the way most 3D graphics are made.</p>
+  <img width="100%" src="node-map.png">
   <div></div>
   <div class="title">
     <h2>Camera, Scene & Renderer</h2>
   </div>
   <p>To draw anything in Three.js you need to use 3 types of object: a camera, a scene and a renderer.</p>
+  <p>The
+    <strong>renderer</strong> translates all your beautiful code into what you see,
+    <br>using
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL">WebGL (Web Graphics Language)</a>
+  </p>
+  <p>You set the size of the canvas element using
+    <strong>renderer.setSize( width, height );</strong>
+  </p>
+  <div class="codeBlock">
+    <p class="codeSnippet">
+      var renderer = new THREE.WebGLRenderer();
+      <br> renderer.setSize( window.innerWidth, window.innerHeight );
+      <br> document.body.appendChild( renderer.domElement );
+    </p>
+  </div>
   <p>The
     <strong>camera</strong> object determines what will be shown on screen.</p>
   <div class="codeBlock">
@@ -89,27 +106,16 @@
       </span>
       <br>&emsp;&emsp;0.1,&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <span class="codeComment">//
-        <strong>Near Fustrum</strong> (close limit)</span>
+        <strong>Near Frustum</strong> (close limit)</span>
       <br>&emsp;&emsp;1000&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <span class="codeComment">//
-        <strong>Far Fustrum</strong> (far limit)</span>
+        <strong>Far Frustum</strong> (far limit)</span>
       <br>&emsp;);
     </p>
   </div>
   <p>By default, the camera is placed in the center of our 3D world (0,0,0) so we must move back along the Z axis:</p>
   <div class="codeBlock">
     <p class="codeSnippet">&emsp;&emsp;camera.position.z = 5;</p>
-  </div>
-
-  <p>The
-    <strong>renderer</strong> translates all your beautiful code into what you see, using
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL">WebGL (Web Graphics Language)</a>
-  </p>
-  <div class="codeBlock">
-    <p class="codeSnippet">
-      var renderer = new THREE.WebGLRenderer();
-      <br> document.body.appendChild( renderer.domElement );
-    </p>
   </div>
   <p>The
     <strong>scene</strong> is the object where the fun happens. This is the object to which we
@@ -150,10 +156,10 @@
     <p class="codeSnippet">
       var geometry = new THREE.Geometry();
       <br>
-      <br> geometry.vertices.push(new THREE.Vector3(10, 0, 0));
-      <br> geometry.vertices.push(new THREE.Vector3(0, 10, 0));
-      <br> geometry.vertices.push(new THREE.Vector3(0, 0, 10));
-      <br> geometry.vertices.push(new THREE.Vector3(10, 0, 0));
+      <br> geometry.vertices.push( new THREE.Vector3( 10, 0, 0 ) );
+      <br> geometry.vertices.push( new THREE.Vector3( 0, 10, 0 ) );
+      <br> geometry.vertices.push( new THREE.Vector3( 0, 0, 10 ) );
+      <br> geometry.vertices.push( new THREE.Vector3( 10, 0, 0 ) );
     </p>
   </div>
   <p>There are also a whole host of premade Geometry objects that will do the maths of drawing a Cube, Sphere, Cylinder or Torus
@@ -165,7 +171,11 @@
     <p class="codeSnippet">
       var material = new THREE.MeshBasicMaterial();
       <br>
-      <br>material.color = new THREE.Color().add(0, 1, 0);
+      <br>material.color = new THREE.Color( 0x00FF00 );
+      <br>material.color = new THREE.Color( "#00FF00" );
+      <br>material.color = new THREE.Color( "rgb(255, 0, 125)" );
+      <br>material.color = new THREE.Color( "hsl(5, 100%, 50%)" );
+      <br>material.color = new THREE.Color( 1.0, 0.8, 0.0 );
     </p>
   </div>
   <p>
@@ -183,11 +193,12 @@
     </p>
   </div>
   <p>
-    This controls how light bounces off the surface of our shapes, how colours blend on different parts of our shape, and how
-    <strong>textures</strong> are
-    <strong>mapped</strong> and stetched over the surface of our shape.</p>
+    Each of these control how
+    <strong>light</strong> bounces off the surface of our shapes. For Lambert and Phong materials to be visible,
+    <a href="https://threejs.org/docs/index.html#api/lights/Light">you must add your own light</a>.
+  </p>
   <img src="materials.png">
-  <p>The Geometry and Material are added to the Mesh, and the Mesh is added to the Scene.</p>
+  <p>The Geometry and Material are added to the Mesh Object, and the Mesh is added to the Scene.</p>
   <div class="codeBlock">
     <p class="codeSnippet">
       var mesh = new THREE.Mesh( geometry, material );
@@ -199,6 +210,9 @@
   <div class="title">
     <h2>Textures and UV coordinates</h2>
   </div>
+  <p>The Material Object also controls how colours blend on different parts of our shape, and how
+    <strong>textures</strong> are
+    <strong>mapped</strong> and stetched over the surface of our shape.</p>
   <p>
     <strong>Textures</strong> are patterns or images that are imported and mapped around the shapes we want to draw.</p>
   <div class="codeBlock">
@@ -221,7 +235,7 @@
       material.map = texture;
     </p>
   </div>
-  <img src="https://sites.google.com/site/craigandera/_/rsrc/1298378962814/craigs-stuff/directx-home/managed-direct3d-tutorial/09-texture-basics/TextureBasics-3.jpg">
+  <img src="TextureBasics-3.jpg">
   <p>However, this can be changed by setting the
     <strong>wrapS</strong> and
     <strong>wrapT</strong> attributes of the texture object.</p>
@@ -231,7 +245,7 @@
       <br>tex.wrapT = THREE.ClampToEdgeWrapping;
     </p>
   </div>
-  <img src="https://docs-assets.developer.apple.com/published/ef808bc2ee/a708d857-d063-472e-96ca-70976eb62c49.png">
+  <img src="wrap.png">
   <p>What is happening here is
     <strong>UV mapping</strong>.</p>
   <p>
@@ -260,25 +274,47 @@
     <p class="codeSnippet">
       mesh.position.x = 100;
       <span class="codeComment">// Move 100 pixels right</span>
-      <br>mesh.position.z = -250;
+    </p>
+    <p class="codeSnippet">mesh.position.z = -250;
       <span class="codeComment">// Move 250 pixels away</span>
-      <br>mesh.position.y += 25;
+    </p>
+    <p class="codeSnippet">mesh.position.y += 25;
       <span class="codeComment">// Move up 25 pixels every frame</span>
+    </p>
+    <p class="codeSnippet">mesh.position.set( 10, 20, 5 );
+      <span class="codeComment">// Move on all axes at the same time.</span>
+    </p>
   </div>
   <div></div>
   <div class="codeBlock">
     <p class="keyItem">Scale</p>
-    <p class="codeSnippet">mesh.scale.set(2,2,2);
-      <span class="codeComment">// Double in size</span>
+    <p class="codeSnippet">mesh.scale.set( 2, 2, 2 );
+      <span class="codeComment">// Double in size uniformly</span>
+    </p>
+    <p class="codeSnippet">mesh.scale.set( 0.75, 0.75, 0.75 );
+      <span class="codeComment">// Reduce size by a quarter</span>
+    </p>
+    <p class="codeSnippet">mesh.scale.set( 0.5, 6.0, 1.0 );
+      <br>
+      <span class="codeComment">// Make half as wide along the X axis, six times taller on the Y axis, an keep the Z axis depth the same</span>
     </p>
   </div>
   <div>
   </div>
   <div class="codeBlock">
     <p class="keyItem">Rotation</p>
-    <p class="codeSnippet">mesh.rotation.x = Math.PI * 5 / 4
-      <br>mesh.rotation.y = Math.PI * 0.5
-      <br>mesh.rotation.z = THREE.Math.degToRad(45);</p>
+    <p class="codeSnippet">mesh.rotation.x = Math.PI * 4 / 3
+      <br>
+      <span class="codeComment">// Rotate by four thirds PI Radians (120&#176;) around the X axis</span>
+    </p>
+    <p class="codeSnippet">mesh.rotation.y = Math.PI * 0.5
+      <br>
+      <span class="codeComment">// Rotate by Half PI Radians (90&#176;) around the Y axis</span>
+    </p>
+    <p class="codeSnippet">mesh.rotation.z = THREE.Math.degToRad(45);
+      <br>
+      <span class="codeComment">// Rotate by Quarter PI Radians (45&#176;) around the Z axis</span>
+    </p>
   </div>
   <p>Rotation in Three.js is measured in
     <a href "">
@@ -295,7 +331,7 @@
     <h2>Recap</h2>
   </div>
   <p>So to recap all that:</p>
-  <img width="100%" src="http://davidscottlyons.com/threejs/presentations/frontporch14/images/node-map.png">
+  <img width="100%" src="node-map.png">
   <div class="codeBlock">
     <p class="codeSnippet" style="font-size:16pt">
       var camera, scene, renderer, mesh;
@@ -321,7 +357,7 @@
       <br>&emsp;&emsp;var texture = new THREE.TextureLoader().load("img.jpg");
       <br>
       <br>&emsp;&emsp;var material = new THREE.MeshBasicMaterial();
-      <br>&emsp;&emsp;material.map: texture;
+      <br>&emsp;&emsp;material.map = texture;
       <br>
       <br>&emsp;&emsp;mesh = new THREE.Mesh( geometry, material );
       <br>
@@ -340,10 +376,24 @@
     </p>
   </div>
   <p>PHEEEEEEW!</p>
+  <p>Much credit due to
+    <a href="http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0">David Scott Lyons</a>
+  </p>
+
   <div class="title">
     <h2>EXERCISE</h2>
   </div>
   <p>Let's get making some 3D fun.</p>
+
+  <div class="codeBlock">
+    <p class="keyItem">
+      <a href="https://threejs.org/docs/">
+        <strong>Three.js Documentation</strong>
+      </a>
+    </p>
+  </div>
+  <p>I've put together some bootstrap code. Read the Three.js docs and have a go at drawing some geometries and materials, adding
+    them to meshes and then showing them in your scene!</p>
   <div class="exercise">
     <a href="three.html" download>
       <button type="button">

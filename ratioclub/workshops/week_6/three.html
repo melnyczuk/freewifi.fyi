@@ -2,14 +2,79 @@
 <html>
 
 <head>
-    <title>Ratio Club Week</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+  <title>Ratio Club Week</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0px;
+      border: 0px;
+      padding: 0px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
 </head>
 
 <body>
-    <script>
-    </script>
+  <script>
+    var camera, scene, renderer
+    var cube
+
+    init()
+    animate()
+
+    function init() {
+      scene = new THREE.Scene()
+
+      camera = new THREE.PerspectiveCamera(75, 1000 / 800, 0.1, 1000)
+      camera.position.z = 15
+
+      renderer = new THREE.WebGLRenderer()
+      renderer.setSize(1000, 800)
+      document.body.appendChild(renderer.domElement)
+
+      /* ADD YOUR SCENE HERE */
+      var geometry = new THREE.SphereGeometry(8, 200, 200)
+      var material = new THREE.MeshPhongMaterial()
+      material.color = new THREE.Color(0x111111)
+      //var texture = new THREE.TextureLoader().load("../../Maker logo.png")
+      //material.map = texture
+      cube = new THREE.Mesh(geometry, material)
+      cube.rotation.set(0.13, 0.7, 0.21)
+      // cube.position.y = +2.6
+      // cube.position.x = -1
+      scene.add(cube)
+
+      rgbLight(-15, 15, 25)
+      var amb = new THREE.AmbientLight(0xAAAAAA, 0.6)
+      scene.add(amb)
+
+      renderer.render(scene, camera) // Render!
+    }
+
+    function rgbLight(x, y, z) {
+      var r = new THREE.DirectionalLight(0x000FF, 1.8) // A Soft White Light
+      r.position.set(x - 5, y, z)  // Move Light slight off center toward the Camera on the left.
+      scene.add(r) // Add Light to scene.
+
+      var g = new THREE.DirectionalLight(0x00FF00, 1.8) // A Soft White Light
+      g.position.set(x, y + 5, z)  // Move Light slight off center toward the Camera on the left.
+      scene.add(g) // Add Light to scene.
+
+      var b = new THREE.DirectionalLight(0xFF0000, 1.8) // A Soft White Light
+      b.position.set(x + 5, y, z)  // Move Light slight off center toward the Camera on the left.
+      scene.add(b) // Add Light to scene.
+    }
+
+    function animate() {
+      requestAnimationFrame(animate) // Make animation function animate every frame.
+
+      cube.rotation.y += 0.001
+      cube.rotation.x += 0.0009
+      // console.log(cube.rotation.y)
+
+      renderer.render(scene, camera) // Render!
+    }
+  </script>
 </body>
 
 </html>
