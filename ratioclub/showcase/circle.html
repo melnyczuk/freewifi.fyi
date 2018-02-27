@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CircleColour</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+  <meta charset="utf-8"/>
+</head>
+
+<body>
+  <script>
+    var 
+    camera, 
+    scene, 
+    renderer, 
+    outerCircle, 
+    innerCircle, 
+    line,
+    outerDot, 
+    innerDot,
+    outerPosition, 
+    innerPosition,
+    loopCounter,
+    random,
+    purpleArray = ['#e600e6', '#ff00ff', '#ffffff', '#e600e6', '#ff00ff', '#ffffff', '#e600e6', '#ff00ff', '#ffffff', '#e600e6', '#ff00ff', '#ffffff', '#ffffff'];
+    blueArray = ['#0000ff', '#000080', '#ffffff', '#0000ff', '#000080', '#ffffff', '#000080', '#0000ff', '#000080', '#0000ff', '#000080', '#ffffff', '#ffffff'];
+    greenArray = ['#00e600', '#006600', '#ffffff', '#00e600', '#006600', '#ffffff', '#00e600', '#006600', '#ffffff', '#00e600', '#006600', '#ffffff', '#ffffff'];
+    redArray = ['#ff0000', '#cc0000', '#ffffff', '#ff0000', '#cc0000', '#990000', '#ff0000', '#cc0000', '#990000', '#ff0000', '#cc0000', '#ffffff', '#ffffff'];
+    yellowArray = ['#ffff33', '#ffbf00', '#ffffff', '#ffff33', '#ffbf00', '#ffffff', '#ffff33', '#ffbf00', '#ffffff', '#ffff33', '#ffbf00', '#ffffff', '#ffffff'];
+    orangeArray = ['#ff9900', '#ff8000', '#ffffff', '#ff9900', '#ff8000', '#ffffff', '#ff9900', '#ff8000', '#ffffff', '#ff9900', '#ff8000', '#ffffff', '#ffffff'];
+    aquaArray = ['#00ffff', '#008080', '#ffffff', '#00ffff', '#008080', '#ffffff', '#00ffff', '#008080', '#ffffff', '#00ffff', '#008080', '#ffffff', '#ffffff'];
+    pinkArray = ['#ff0080', '#ff99cc', '#ffffff', '#ff0080', '#ff99cc', '#ffffff', '#ff0080', '#ff99cc', '#ffffff', '#ff0080', '#ff99cc', '#ffffff', '#ffffff'];
+    whiteArray = ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'];
+   
+    init();
+    animate();
+       
+    function init() {
+      scene = new THREE.Scene();
+
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 15;
+
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      /* ADD YOUR SCENE HERE */
+      random = Math.floor(Math.random()*9);
+
+      outerCircle = new THREE.Mesh (new THREE.CircleBufferGeometry( 10 , 360 ),
+                                    new THREE.MeshBasicMaterial( { color: 0x000000 } ));
+      scene.add(outerCircle);
+ 
+      innerCircle = new THREE.Mesh (new THREE.CircleBufferGeometry( 4, 360 ),
+                                    new THREE.MeshBasicMaterial( { color: 0x000000 } ));
+      scene.add(innerCircle);
+
+      outerDot = new THREE.Mesh (new THREE.CircleGeometry( 0.01, 32 ),
+                                 new THREE.MeshBasicMaterial( {color: getColour(0)} ));
+
+      outerPosition = 360;     
+
+      innerDot = new THREE.Mesh (new THREE.CircleGeometry( 0.01, 32 ),
+                                 new THREE.MeshBasicMaterial( {color: getColour(0)} ));
+
+      innerPosition = 0;   
+
+      loopCounter = 0;                   
+                 
+      var light = new THREE.DirectionalLight(0xF0F0F0, 0.8); // A Soft White Light
+      light.position.set(-6, 10, 10);  // Move Light slight off center toward the Camera on the left.
+      scene.add(light); // Add Light to scene.
+
+      renderer.render(scene, camera); // Render!
+    }
+
+    function animate() {
+      var id = requestAnimationFrame(animate); // Make animation function animate every frame.
+      
+      if (loopCounter > 12) {
+        cancelAnimationFrame( id );
+      }
+
+      /* DO YOUR ANIMATION CODE HERE */
+      var outerDegrees = 70;
+      var innerDegrees = 130;
+
+      var outerx = 10 * Math.cos(2 * Math.PI * outerPosition / outerDegrees);
+      var outery = 10 * Math.sin(2 * Math.PI * outerPosition / outerDegrees);  
+
+      outerDot.position.x = outerx;
+      outerDot.position.y = outery;
+      scene.add(outerDot); 
+
+      var innerx = 4 * Math.cos(2 * Math.PI * innerPosition / innerDegrees);
+      var innery = 4 * Math.sin(2 * Math.PI * innerPosition / innerDegrees);
+
+      innerDot.position.x = innerx;
+      innerDot.position.y = innery;
+      scene.add(innerDot); 
+
+      var geometry = new THREE.Geometry();
+      geometry.vertices.push(new THREE.Vector3(outerDot.position.x, outerDot.position.y, 0));
+      geometry.vertices.push(new THREE.Vector3(innerDot.position.x, innerDot.position.y, 0));
+      var material = new THREE.LineBasicMaterial( {color: getColour(loopCounter)} );
+      line = new THREE.Line(geometry, material);
+      scene.add(line);
+
+      renderer.render(scene, camera); // Render!
+
+      outerPosition++;
+      innerPosition++;
+
+      if ((outerPosition % outerDegrees) == 0) {
+        loopCounter++;
+
+      geometry.dispose();
+      material.dispose();
+     
+      }
+       
+    }
+
+    function getColour(pos) {
+
+        switch (random) {
+          case 0:
+            return purpleArray[pos];
+            break;
+          case 1:
+            return blueArray[pos];
+            break;
+          case 2:
+            return greenArray[pos];
+            break;
+          case 3:
+            return redArray[pos];
+            break;
+          case 4:
+            return yellowArray[pos];
+            break;
+          case 5:
+            return orangeArray[pos];
+            break;
+          case 6:
+            return aquaArray[pos];
+            break;
+          case 7:
+            return pinkArray[pos];
+            break; 
+          case 8:
+            return whiteArray[pos];
+            break;   
+              
+        }  
+    }
+
+  </script>
+</body>
+
+</html>
