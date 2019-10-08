@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ROCKETS</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var camera, scene, renderer, distance, ship, zRotate = 0, yRotate = 0;
+    var smoke = [ "#a5a5a5" , "#4f4f4f" , "#1e1e1e" , "#bfbfbf", "#878787","#e0e0e0","#e8e8e8","#ffffff","#ededed"];
+    var fireSet = ["#f48342","#ff804f","#ff634f","#ff4f4f","#ffe14f","#ffc14f"];
+
+    init();
+    animate();
+
+    function init() {
+    scene = new THREE.Scene()
+    scene.background = new THREE.Color( "#7EC0EE" );
+
+    shipG = new THREE.ConeGeometry ( 5 , 20 , 32 );
+    shipM = new THREE.MeshBasicMaterial();
+    shipM.color = new THREE.Color( "#ff3030" );  
+    ship = new THREE.Mesh( shipG , shipM );
+    ship.position.set( 0 , 11 , 0 )
+    scene.add(ship);   
+
+    //camera
+    var aspect = window.innerWidth / window.innerHeight;
+    distance = 50;
+    camera = new THREE.OrthographicCamera( - distance * aspect, distance * aspect, distance, - distance, 1, 7000 );
+    camera.updateProjectionMatrix();
+    camera.position.set( 5000, 5000, 5000 );
+    camera.zoom = 1.25
+    camera.lookAt( scene.position);
+
+    grassG = new THREE.BoxGeometry( 300 , 3 , 300 );
+    grassM = new THREE.MeshPhongMaterial();
+    grassM.color = new THREE.Color( "#89c189" );
+    var grass = new THREE.Mesh( grassG , grassM );
+    scene.add(grass);
+
+    sandG = new THREE.BoxGeometry( 350 , 2 , 350 );
+    sandM = new THREE.MeshPhongMaterial();
+    sandM.color = new THREE.Color( "#ffe4a8" );
+    var sand = new THREE.Mesh( sandG , sandM );
+    scene.add(sand);
+
+    seaG = new THREE.BoxGeometry( 1000 ,1 , 1000 );
+    seaM = new THREE.MeshPhongMaterial();
+    seaM.color = new THREE.Color( "#4563a0" );
+    var sea = new THREE.Mesh( seaG , seaM );
+    scene.add(sea);
+
+    padG = new THREE.BoxGeometry( 25 , 5 , 25 );
+    padM = new THREE.MeshPhongMaterial();
+    var pad = new THREE.Mesh(padG,padM);
+    scene.add(pad);
+
+    //tree generation  
+    for (i = 0; i < 30; i++) {
+      treeG = new THREE.ConeGeometry( 5 , 20 , 32 );
+      treeM = new THREE.MeshPhongMaterial();
+      treeM.color = new THREE.Color( "#4ca35e" );
+      var tree = new THREE.Mesh( treeG , treeM );
+      var treeX = Math.floor((Math.random() * 249) - 148);
+      var treeZ = Math.floor((Math.random() * 249) - 148);
+      tree.position.set( treeX ,3 , treeZ ) 
+      scene.add(tree);
+    }
+
+    //clouds
+    for (i = 0; i < 200; i++) {
+      var clouds = new THREE.Mesh( new THREE.BoxGeometry(Math.floor((Math.random() * 50) + 20),
+      Math.floor((Math.random() * 30) + 20),Math.floor((Math.random() * 70) + 20)),
+      new THREE.MeshBasicMaterial());
+      clouds.position.set(Math.floor((Math.random() * 1401) - 700),650,Math.floor((Math.random() * 1401) - 700));
+      scene.add(clouds);
+
+    }
+
+    //the moons
+    var moon = new THREE.Mesh( new THREE.SphereGeometry( 30, 32, 32 ),new THREE.MeshPhongMaterial());
+    moon.position.set(-300,2200,-400);
+    scene.add(moon);
+
+    var moon2 = new THREE.Mesh( new THREE.SphereGeometry( 30, 32, 32 ),new THREE.MeshPhongMaterial());
+    moon2.position.set(-300,3450,-400);
+    scene.add(moon2);
+
+    //planets
+    planetM = new THREE.MeshPhongMaterial();
+    var planet = new THREE.Mesh( new THREE.SphereGeometry( 100, 32, 32 ),planetM);
+    planetM.color = new THREE.Color("#cc690c");
+    planet.position.set(-300,2800,-100);
+    scene.add(planet);
+
+    planetM2 = new THREE.MeshPhongMaterial();
+    var planet2 = new THREE.Mesh( new THREE.SphereGeometry( 150, 32, 32 ),planetM2);
+    planetM2.color = new THREE.Color("#f7e77e");
+    planet2.position.set(-150,3400,-150);
+    scene.add(planet2);
+
+    planetM3 = new THREE.MeshPhongMaterial();
+    var planet3 = new THREE.Mesh( new THREE.SphereGeometry( 100, 32, 32 ),planetM3);
+    planetM3.color = new THREE.Color("#3ba5dd");
+    planet3.position.set(-200,4300,-300);
+    scene.add(planet3);
+
+    ringsM = new THREE.MeshPhongMaterial();
+    var rings = new THREE.Mesh( new THREE.CircleGeometry( 125, 32 ),ringsM);
+    rings.rotation.y = THREE.Math.degToRad(70);
+    rings.rotation.x = THREE.Math.degToRad(70);
+    ringsM.color = new THREE.Color("#f7e77e");
+    rings.position.set(-200,4300,-300);
+    scene.add(rings);
+
+    //astroids
+    for (i = 0; i < 500; i++) {
+      astroM = new THREE.MeshPhongMaterial();
+      var astroids = new THREE.Mesh( new THREE.IcosahedronGeometry( 10, 0 ),astroM);
+      astroM.color = new THREE.Color("#7c5029");
+      astroids.position.set(Math.floor((Math.random() * 1401) - 700),3800,Math.floor((Math.random() * 1401) - 700));
+      astroids.rotation.set(Math.floor((Math.random() * 359) + 1),Math.floor((Math.random() * 359) + 1),Math.floor((Math.random() * 359) + 1));
+      scene.add(astroids);
+    }
+
+    //blackhole
+    holeM = new THREE.MeshBasicMaterial();
+    var hole = new THREE.Mesh( new THREE.SphereGeometry( 25, 32, 32 ),holeM);
+    holeM.color = new THREE.Color("#282727");
+    var light = new THREE.PointLight( '#645287', 10, 600 );
+    light.position.set( -500, 4600, 50 );
+    scene.add( light ); 
+    hole.position.set(-500,4600,-475);
+    scene.add(hole);
+
+    var circleM = new THREE.MeshPhongMaterial();
+    var circle = new THREE.Mesh( new THREE.CircleGeometry( 100, 32 ),circleM);
+    circle.rotation.y = THREE.Math.degToRad(70)
+    circleM.color = new THREE.Color("#645287");
+    circle.position.set(-500,4600,-475);
+    scene.add(circle);
+
+    //light
+    var light = new THREE.DirectionalLight(0xF0F0F0, 1);
+    light.position.set(7000, 10000, 2000);
+    scene.add(light);
+
+    //renderer
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+    }
+
+    function animate() {
+      var id = requestAnimationFrame(animate);
+
+      if (ship.position.y < 5000){
+      camera.position.set( 50, ship.position.y + 30, 50 );
+      } 
+      else camera.position.set( 50 , 5030 , 50)
+
+      if (camera.zoom > 0.4){
+        camera.zoom -= 0.001;
+        camera.updateProjectionMatrix();
+      }
+
+      //smoke
+      if (ship.position.y < 1819){
+      var smokeG = new THREE.BoxGeometry(5,5,5);
+      var smokeM = new THREE.MeshBasicMaterial();
+      smokeM.color = new THREE.Color( smoke[Math.floor(Math.random() * smoke.length)]);
+      var smokeparticle = new THREE.Mesh( smokeG , smokeM );
+      var xValue = Math.floor((Math.random() * 11) - 5);
+      var zValue = Math.floor((Math.random() * 11) - 5);
+      smokeparticle.position.set(xValue , ship.position.y - 30, zValue)
+      scene.add(smokeparticle);
+      }
+      //fire
+      if (ship.position.y < 1800){
+      var fireG = new THREE.BoxGeometry (3,3,3);
+      var fireM = new THREE.MeshBasicMaterial();
+      fireM.color = new THREE.Color(fireSet[Math.floor(Math.random() * fireSet.length)]);
+
+      var fire = new THREE.Mesh( fireG , fireM );
+      var fireX = Math.floor((Math.random() * 6) - 2.5);
+      var fireZ = Math.floor((Math.random() * 6) - 2.5);
+      fire.position.set( fireX , ship.position.y - 11, fireZ)       
+      scene.add(fire);
+      }
+      //take off + smoke particles + slowdown
+      if (ship.position.y < 20){
+        ship.position.y += 0.1
+        xValue = Math.floor((Math.random() * 101) - 70);
+        zValue = Math.floor((Math.random() * 101) - 70);
+        smokeparticle.position.set(xValue , ship.position.y - 10, zValue)
+        scene.add(smokeparticle);
+      }
+      else if (ship.position.y < 30){
+        ship.position.y += 0.2
+        xValue = Math.floor((Math.random() * 71) - 50);
+        zValue = Math.floor((Math.random() * 71) - 50);
+        smokeparticle.position.set(xValue , ship.position.y - 5, zValue)
+        scene.add(smokeparticle);
+      }
+      else if (ship.position.y < 45){
+        ship.position.y += 0.3
+        xValue = Math.floor((Math.random() * 61) - 30);
+        zValue = Math.floor((Math.random() * 61) - 30);
+        smokeparticle.position.set(xValue , ship.position.y - 5, zValue)
+        scene.add(smokeparticle);
+      }
+      else if (ship.position.y < 67.5){
+        ship.position.y += 0.4
+        xValue = Math.floor((Math.random() * 61) - 30);
+        zValue = Math.floor((Math.random() * 61) - 30);
+        smokeparticle.position.set(xValue , ship.position.y - 5, zValue)
+        scene.add(smokeparticle);
+      }
+      else if (ship.position.y < 101.25){
+        ship.position.y += 0.5
+        xValue = Math.floor((Math.random() * 61) - 30);
+        zValue = Math.floor((Math.random() * 61) - 30);
+        smokeparticle.position.set(xValue , ship.position.y - 20, zValue)
+        scene.add(smokeparticle);
+      }
+      else if (ship.position.y < 151.88){
+        ship.position.y += 0.6
+      }
+      else if (ship.position.y < 227.32){
+        ship.position.y += 0.7
+      }
+      else if (ship.position.y < 340.98){
+        ship.position.y += 0.8
+      }
+      else if (ship.position.y < 511.47){
+        ship.position.y += 0.9
+      }
+      else if (ship.position.y < 4900){
+        ship.position.y += 1
+      }
+      else if (ship.position.y < 4912.5){
+        ship.position.y += 0.9
+      }
+      else if (ship.position.y < 4925){
+        ship.position.y += 0.8
+      }
+      else if (ship.position.y < 4937.5){
+        ship.position.y += 0.7
+      }
+      else if (ship.position.y < 4950){
+        ship.position.y += 0.5
+      }
+      else if (ship.position.y < 4962.5){
+        ship.position.y += 0.4
+      }
+      else if (ship.position.y < 4975){
+        ship.position.y += 0.3
+      }
+      else if (ship.position.y < 4987.5){
+        ship.position.y += 0.2
+      }
+      else if (ship.position.y < 5000){
+        ship.position.y += 0.1
+      }
+      else {
+        ship.position.y += 0;
+        if (zRotate == 90) {
+          zRotate += 0;
+          ship.rotation.z = THREE.Math.degToRad(zRotate);
+          ship.position.z -= 1;
+          ship.position.x -= 1;
+          if (ship.position.z == -200){
+            cancelAnimationFrame(id)
+          }
+            
+        }
+        else {zRotate += 1;
+          ship.rotation.z = THREE.Math.degToRad(zRotate)}
+
+        if (yRotate == -45){
+          yRotate  += 0;
+          ship.rotation.y = THREE.Math.degToRad(yRotate);
+        }
+        else {yRotate -=1;
+          ship.rotation.y = THREE.Math.degToRad(yRotate)}
+      }
+
+
+      
+
+
+      //colorchange
+      if (ship.position.y < 600){
+        scene.background = new THREE.Color( "#7EC0EE" );
+      }
+      else if (ship.position.y < 800){
+        scene.background = new THREE.Color( "#76b5e0" );
+      }
+      else if (ship.position.y < 1000){
+        scene.background = new THREE.Color( "#6da7ce" );
+      }
+      else if (ship.position.y < 1200){
+        scene.background = new THREE.Color( "#6194b7" );
+      }
+      else if (ship.position.y < 1300){
+        scene.background = new THREE.Color( "#527d9b" );
+      }
+      else if (ship.position.y < 1400){
+        scene.background = new THREE.Color( "#466c87" );
+      }
+      else if (ship.position.y < 1500){
+        scene.background = new THREE.Color( "#395970" );
+      }
+      else if (ship.position.y < 1600){
+        scene.background = new THREE.Color( "#2b4456" );
+      }
+      else if (ship.position.y < 1700){
+        scene.background = new THREE.Color( "#1f3342" );
+      }
+      else if (ship.position.y < 1800){
+        scene.background = new THREE.Color( "#162530" );
+      }
+      else if (ship.position.y < 1900){
+        scene.background = new THREE.Color( "#0d171e" );
+      }
+      else if (ship.position.y > 2000){
+        scene.background = new THREE.Color( "#000000" );
+      }
+
+      //stars
+      if (ship.position.y > 1800){
+          var stars = new THREE.Mesh( new THREE.BoxGeometry(1,1,1),new THREE.MeshBasicMaterial());
+          stars.position.set(Math.floor((Math.random() * 801) - 750),ship.position.y + 50,Math.floor((Math.random() * 801) - 750));
+          scene.add(stars);
+      }
+      renderer.render(scene, camera);
+    }
+
+
+  </script>
+</body>
+
+</html>
