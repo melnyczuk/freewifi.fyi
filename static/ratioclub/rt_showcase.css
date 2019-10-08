@@ -1,0 +1,22 @@
+body {
+  margin: 0px;
+  font-family: "Roboto";
+}
+
+#three {
+  width: 65%;
+  height: 100vh;
+  float: left;
+}
+
+#menu {
+  /* width: 35%; */
+  height: 100vh;
+  background: #000000;
+  /* float: right; */
+  padding-left: 25px;
+  padding-top: 25px;
+  padding-right: 10px;
+  color: #FFFFFF;
+  overflow: auto;
+}
