@@ -33,11 +33,11 @@
 var your_ip = "192.168.1.151"; // put your IPv4 Address here (it should be 4 numbers seperated by full-stops)
 
 var message = send_code(
-    ["fill(255,0,0);", "ellipse(100,100, 50, 50);"]
-    /* 
-    | Put all your commands here! 
-    | Remember to make each of them strings and to use array syntax ["",""] 
-    */
+  ["fill(255,0,0);", "ellipse(100,100, 50, 50);"]
+  /* 
+  | Put all your commands here! 
+  | Remember to make each of them strings and to use array syntax ["",""] 
+  */
 );
 
 
@@ -48,11 +48,11 @@ var message = send_code(
 // THIS FUNCTION TURNS YOUR COMMANDS INTO THE OSC MESSAGE:
 
 function send_code(code) {
-    var codeAsString = ""; // First we make all the commands into one long string to preserve scope.
-    for (var i = 0; i < code.length; i++) { // We do this by looping through all the commands,
-        codeAsString += code[i]; // and adding them onto the string.
-    }
-    return { address: "/", args: [codeAsString] }; // Then we format everything into and OSC Message Object.
+  var codeAsString = ""; // First we make all the commands into one long string to preserve scope.
+  for (var i = 0; i < code.length; i++) { // We do this by looping through all the commands,
+    codeAsString += code[i]; // and adding them onto the string.
+  }
+  return { address: "/", args: [codeAsString] }; // Then we format everything into and OSC Message Object.
 }
 
 /*-------------------------------------------------------------*/
@@ -62,15 +62,15 @@ function send_code(code) {
 var osc = require('osc'); // First we require OSC.
 
 var oscPort = new osc.UDPPort({ // Then we build our port to send the message.
-    localAddress: your_ip,
-    localPort: 57121
+  localAddress: your_ip,
+  localPort: 57121
 });
 
-oscPort.on("ready", function() { // Then when the message is ready:
-    console.log(message);
-    oscPort.send(message, "192.168.1.151", 57110); // Send the the message
-    setTimeout(function() { oscPort.close(); }, 200); // Wait to let my computer recieve it.
-    console.log("sent!");
+oscPort.on("ready", function () { // Then when the message is ready:
+  console.log(message);
+  oscPort.send(message, "192.168.1.151", 57110); // Send the the message
+  setTimeout(function () { oscPort.close(); }, 200); // Wait to let my computer recieve it.
+  console.log("sent!");
 });
 
 oscPort.open(); // This opens the port on your computer to send the message to mine.
