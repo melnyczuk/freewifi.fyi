@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Grenze&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
 
 /* MEDIA */
 @media only screen and (min-width: 730px) {
@@ -21,7 +23,7 @@
 
 /* CLASSES */
 .projects {
-	font-family: 'Grenze';
+	font-family: 'Arvo';
 	padding-left: 5%;
 	font-size: 24pt;
 	font-weight: bold;
@@ -34,7 +36,7 @@
 
 /* ELEMENTS */
 body {
-	font-family: 'Grenze', 'Helvetica Neue', Helvetica, 'Liberation Sans', Calibri,
+	font-family: 'Arvo', 'Helvetica Neue', Helvetica, 'Liberation Sans', Calibri,
 		Arial, sans-serif;
 	font-size: 14pt;
 	max-width: 560px;
@@ -48,7 +50,7 @@ p {
 	position: relative;
 	font-size: 20pt;
 	display: block;
-	font-family: 'Grenze', sans-serif;
+	font-family: 'Arvo', sans-serif;
 	font-weight: bold;
 	font-size: 20pt;
 }
