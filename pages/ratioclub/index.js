@@ -186,9 +186,6 @@ const RatioClub = () => (
           </tr>
         </table>
       </p>
-      <p>
-        For all enquiries, please contact Alisa Blakeney at alisa@freewifi.fyi
-    </p>
       <footer>
         <h6 class='serif'>
           This project has been assisted by the Australian Government through the Australia Council for the Arts, its arts funding
