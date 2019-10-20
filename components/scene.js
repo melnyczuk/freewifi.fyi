@@ -7,7 +7,7 @@ const loadArtwork = ({ dimensions, textureURL, name, rotation, position }, i) =>
   const geometry = new THREE.PlaneGeometry(...dimensions);
 
   const material = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load(`/static/ratioclub/${textureURL}`),
+    map: new THREE.TextureLoader().load(`/static/ratioclub/showcase/${textureURL}`),
     color: 0xffffff,
     side: THREE.DoubleSide
   });
@@ -35,6 +35,7 @@ const getRoom = (img) => {
 }
 
 const getControls = (camera) => {
+  if (!camera) return;
   let controls = new FPC(camera);
   controls.activeLook = false;
   controls.mouseDragOn = true;
@@ -44,18 +45,24 @@ const getControls = (camera) => {
 }
 
 const runThreeScene = (container, menu) => {
-  const roomSphereBackgroundImg = '/static/ratioclub/maker.jpg';
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return null;
+  }
+
+  const roomSphereBackgroundImg = '/static/ratioclub/showcase/maker.jpg';
   const width = window.innerWidth * 0.65;
   const height = window.innerHeight;
-
+  
   /* listen for mouse interaction */
   window.addEventListener('click', updateMenu);
-
-  let scene = new THREE.Scene();
+  
   let camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  let scene = new THREE.Scene();
   let renderer = new THREE.WebGLRenderer();
   let clock = new THREE.Clock();
-
+  
+  // camera.rotate.y = 90 * Math.PI / 180;
+  
   scene.background = new THREE.Color(0xffffff);
 
   renderer.setSize(width, height);

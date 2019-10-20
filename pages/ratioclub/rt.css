@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 1.5em;
+	page-break-after: avoid;
+}
+
+body {
+	font-family: 'Roboto Mono', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14pt;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+p {
+	display: block;
+	font-family: 'Roboto Mono', sans-serif;
+  font-size: 14pt;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 730px) {
+	div {
+		width: 90%;
+		height: auto;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	div {
+		width: 75%;
+		height: auto;
+		margin-left: 12.5%;
+		margin-right: 12.5%;
+	}
+}
+
+/* @media only screen {
+	div {
+		width: 50%;
+		margin-left: 25%;
+		margin-right: 25%;
+	}
+} */
+
+.serif {
+	font-family: 'Roboto Slab', serif;
+}
+
+a
+/* All links */
+
+ {
+	/* Keep links clean. On screen, they are colored; in print, they do nothing anyway. */
+	text-decoration: none;
+}
+
+@media screen {
+	a:hover {
+		/* On hover, we indicate a bit more that it is a link. */
+		text-decoration: underline;
+	}
+}
+
+footer {
+	font-family: 'Roboto Slab';
+	margin: inherit;
+}
+
+/* ---- Images ---- */
+
+img {
+	/*display: inline-block;*/
+	width: inherit;
+	height: auto;
+	padding: 0px;
+	margin: inherit;
+	border: 0px;
+}
+
+footer {
+	/*display:block;*/
+	width: inherit;
+	height: auto;
+	margin: inherit;
+}
+
+.figure {
+	/* Center the image and caption */
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-style: italic;
+}
+
+/* ---- Tables ---- */
+
+table {
+	border-width: inherit;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-top: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+	width: -webkit-fill-available;
+}
+
+thead {
+	border-bottom: 1pt solid #000;
+	background-color: #eee;
+}
+
+tbody {
+	font-family: 'Roboto Mono', sans-serif;
+	font-size: 14pt;
+}
+
+td,
+th {
+	width: auto;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	vertical-align: top;
+	padding-right: 0.5em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+}
+
+th {
+	font-weight: bold;
+}

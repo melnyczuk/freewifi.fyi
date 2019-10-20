@@ -1,38 +1,16 @@
-// <!DOCTYPE html>
-// <html>
-
-// <head>
-//   <title>Ratio Club</title>
-//   <meta charset="UTF-8">
-//   <meta name="description" content="Ratio Club was a free ten-week workshop program exploring computation as creative practice.">
-//   <meta name="author" content="HPM">
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-//   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-//   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-//   <link rel="stylesheet" type="text/css" href="./style_fw_rt.css" />
-// </head>
-
-// <body></body>
-
-// </html>
-
-// <body>
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-const staticPath = '/static/ratioclub/';
+import './rt.css';
 
 const RatioClub = () => (
   <>
     <Head>
       <title>Ratio Club</title>
-      <link href={staticPath + 'ratioclub.css'} rel="stylesheet" />
     </Head>
     <div>
-      <img src={staticPath + 'RT-banner-web.png'} style={{ marginTop: '2em' }} />
+      <img src='/static/ratioclub/RT-banner-web.png' style={{ marginTop: '2em' }} />
       <h1>Welcome to Ratio Club!</h1>
       <p>
         Ratio Club was a free ten-week workshop program exploring computation as creative practice. Participants took part in a series
@@ -218,8 +196,7 @@ const RatioClub = () => (
         <br />
           <br /> Ratio Club is a partnership between Free Wifi and the always awesome Maker + Co.
       </h6>
-        <img src={staticPath + 'maker-logo.png'} class='maker' />
-
+        <img src='/static/ratioclub/maker-logo.png' class='maker' />
       </footer>
     </div>
   </>
