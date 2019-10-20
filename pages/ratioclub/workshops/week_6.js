@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
+import './rt_workshops.css';
+
 const Week6 = () => (
   <>
     <Head>
       <title>RATIO CLUB WEEK 6</title>
-      <link rel="stylesheet" type="text/css" href="/static/ratioclub/rt_workshops.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
     </Head>
   <div class="title">
@@ -58,7 +59,7 @@ const Week6 = () => (
   </div>
   <p>The mechanics of Three.js has a distinct structure that we have to build up with our code. At first it may seem complicated
     but it makes a lot of sense and is the way most 3D graphics are made.</p>
-  <img width="100%" src="node-map.png" />
+  <img width="100%" src="/static/ratioclub/workshops/node-map.png" />
   <div></div>
   <div class="title">
     <h2>Camera, Scene & Renderer</h2>
@@ -184,7 +185,7 @@ const Week6 = () => (
     <strong>light</strong> bounces off the surface of our shapes. For Lambert and Phong materials to be visible,
     <a href="https://threejs.org/docs/index.html#api/lights/Light">you must add your own light</a>.
   </p>
-  <img src="materials.png" />
+  <img src="/static/ratioclub/workshops/materials.png" />
   <p>The Geometry and Material are added to the Mesh Object, and the Mesh is added to the Scene.</p>
   <div class="codeBlock">
     <p class="codeSnippet">
@@ -222,7 +223,7 @@ const Week6 = () => (
       material.map = texture;
     </p>
   </div>
-  <img src="TextureBasics-3.jpg" />
+  <img src="/static/ratioclub/workshops/TextureBasics-3.jpg" />
   <p>However, this can be changed by setting the
     <strong>wrapS</strong> and
     <strong>wrapT</strong> attributes of the texture object.</p>
@@ -232,15 +233,15 @@ const Week6 = () => (
       <br />tex.wrapT = THREE.ClampToEdgeWrapping;
     </p>
   </div>
-  <img src="wrap.png" />
+  <img src="/static/ratioclub/workshops/wrap.png" />
   <p>What is happening here is
     <strong>UV mapping</strong>.</p>
   <p>
     <strong>U</strong> is the horizontal coordinate using for texture mapping, and
     <strong>V</strong> is the vertical coordinate.</p>
   <div></div>
-  <img src="tex.png" />
-  <img src="ture.png" />
+  <img src="/static/ratioclub/workshops/tex.png" />
+  <img src="/static/ratioclub/workshops/ture.png" />
   <p>"The UV mapping process involves assigning pixels in the image to surface mappings on the polygon, usually done by "programmatically"
     copying a triangular piece of the image map and pasting it onto a triangle on the object."
     <a href="https://en.wikipedia.org/wiki/UV_mapping">Wikipedia</a>
@@ -306,13 +307,13 @@ const Week6 = () => (
   <p>Rotation in Three.js is measured in <strong>Radians</strong> which are all fractions of <strong>Pi</strong>.</p>
   <p>The function
     <strong>THREE.Math.degToRad()</strong> will convert Degrees to Radians.</p>
-  <img src="http://davidscottlyons.com/threejs/presentations/frontporch14/images/unit-circle-radians.png" />
+  <img src="https://davidscottlyons.com/threejs/presentations/frontporch14/images/unit-circle-radians.png" />
   <p>( <span style={{color: 'red'}}>Radians in red</span> )</p>
   <div class="title">
     <h2>Recap</h2>
   </div>
   <p>So to recap all that:</p>
-  <img width="100%" src="node-map.png" />
+  <img width="100%" src="/static/ratioclub/workshops/node-map.png" />
   <div class="codeBlock">
     <p class="codeSnippet" style={{fontSize: '16pt'}}>
       var camera, scene, renderer, mesh;
@@ -358,7 +359,7 @@ const Week6 = () => (
   </div>
   <p>PHEEEEEEW!</p>
   <p>Much credit due to
-    <a href="http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0">David Scott Lyons</a>
+    <a href="https://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0">David Scott Lyons</a>
   </p>
 
   <div class="title">

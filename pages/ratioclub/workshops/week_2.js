@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
+import './rt_workshops.css';
+
 const Week2 = () => (
   <>
     <Head>
       <title>RATIO CLUB WEEK 2</title>
-      <link rel="stylesheet" type="text/css" href="/static/ratioclub/rt_workshops.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
     </Head>
     <div class="title">
@@ -136,7 +137,7 @@ const Week2 = () => (
     </div>
     <p>This allows us to give the circle logical rules to follow.<br />These are called Conditional Statements.</p>
     <p>Conditional Statements operate <strong>in order</strong>:</p>
-    <img src="http://2.bp.blogspot.com/-RztMkL0ZO_c/Uuyh1tV6fKI/AAAAAAAAAl4/LQCQ8PgRvqI/s1600/perl-if-elsif-else.png" />
+    <img src="https://2.bp.blogspot.com/-RztMkL0ZO_c/Uuyh1tV6fKI/AAAAAAAAAl4/LQCQ8PgRvqI/s1600/perl-if-elsif-else.png" />
     <p>Like so.</p>
     <div class="title">
       <h2>For Loops</h2>

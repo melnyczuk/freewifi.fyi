@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
+import './rt_workshops.css';
+
 const Week5 = () => (
   <>
     <Head>
       <title>RATIO CLUB WEEK 5</title>
-      <link rel="stylesheet" type="text/css" href="/static/ratioclub/rt_workshops.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
     </Head>
   <div class="title">
@@ -134,7 +135,7 @@ const Week5 = () => (
     <h2>Generative Art</h2>
   </div>
   <div></div>
-  <img src="http://jamesbridle.com/content/1-works/81-a-ship-adrift/1_shipadrift.png" />
+  <img src="https://jamesbridle.com/content/1-works/81-a-ship-adrift/1_shipadrift.png" />
   <p class="keyItem">A Ship Adrift by James Bridle</p>
   <p>James Bridle is a British writer and artist who makes a lot of brilliant work analysing computers and technology.</p>
   <p>He runs/ran a blog called
@@ -142,9 +143,9 @@ const Week5 = () => (
   <p>His work
     <i>A Ship Adrift</i> uses real-time weather data from the wind direction in London, to move a virtual ship around the a
     map of the world.</p>
-  <img src="http://booktwo.org/wp-content/uploads/2012/02/roomforlondon.jpg" />
+  <img src="https://booktwo.org/wp-content/uploads/2012/02/roomforlondon.jpg" />
   <p>
-    <a href="http://jamesbridle.com/works/a-ship-adrift">More Info on James Bridle</a>
+    <a href="https://jamesbridle.com/works/a-ship-adrift">More Info on James Bridle</a>
   </p>
   <div></div>
   <img src="https://2104310a1da50059d9c5-d1823d6f516b5299e7df5375e9cf45d2.ssl.cf2.rackcdn.com/nmbx/2014/10/roomtone.jpg" />
@@ -163,7 +164,7 @@ const Week5 = () => (
   <p>
     <a href="https://youtu.be/YZLnFICwBUo?t=31s">Some CD music by Nicolas Collins</a>
   </p>
-  <img src="http://78.media.tumblr.com/d97f28071ef04d25d90a12cd0140e456/tumblr_oe8cn7VbDX1qbgdnxo1_540.gif" />
+  <img src="https://78.media.tumblr.com/d97f28071ef04d25d90a12cd0140e456/tumblr_oe8cn7VbDX1qbgdnxo1_540.gif" />
   <p class="keyItem">Saskia Freeke</p>
   <p>Saskia Freeke is a Dutch designer, coder and artist. Every day for the past 2 years she has been making geometric gifs
     with code.</p>
@@ -171,9 +172,9 @@ const Week5 = () => (
   <p>
     <a href="https://blog.kadenze.com/creative-technology/p5-js-crash-course-recreate-art-you-love/">Saskia's guide to making generative art with P5</a>
   </p>
-  <img src="http://78.media.tumblr.com/b089c454faa3573d3f2125dd0cfdfe77/tumblr_o5ya5obnvD1qbgdnxo1_1280.png" />
+  <img src="https://78.media.tumblr.com/b089c454faa3573d3f2125dd0cfdfe77/tumblr_o5ya5obnvD1qbgdnxo1_1280.png" />
   <p>
-    <a href="http://sasj.tumblr.com">Saskia's blog of daily work.</a>
+    <a href="https://sasj.tumblr.com">Saskia's blog of daily work.</a>
   </p>
   {/* <!-- CREATING ALGORITHMS --> */}
   <div class="title">
@@ -193,7 +194,7 @@ const Week5 = () => (
     <h2>Algorithmic Planning</h2>
   </div>
   <div></div>
-  <img src="http://78.media.tumblr.com/3857b34c02f31b51ba79982018d9a4d7/tumblr_o3sce9MsiC1qbgdnxo1_540.gif" />
+  <img src="https://78.media.tumblr.com/3857b34c02f31b51ba79982018d9a4d7/tumblr_o3sce9MsiC1qbgdnxo1_540.gif" />
   <p>Making an idea into an algorithm is the hardest part of writing code. But if you get it right, the rest is easy.</p>
   <p>The best coders are those who can analyse a problem and see it step by step. The best way to write code is to make each
     step as small as possible.</p>

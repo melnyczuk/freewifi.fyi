@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
+import './rt_workshops.css';
+
 const Week0 = () => (
   <>
 <Head>
   <title>RATIO CLUB WEEK 0</title>
-  <link rel="stylesheet" type="text/css" href="/static/ratioclub/rt_workshops.css" />
      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
 </Head>
@@ -71,7 +72,7 @@ const Week0 = () => (
             tags to play sounds
 </p>
 <audio controls>
-              <source src="http://www.orangefreesounds.com/wp-content/uploads/2016/09/Sad-cat.mp3" type="audio/mpeg" />
+              <source src="https://www.orangefreesounds.com/wp-content/uploads/2016/09/Sad-cat.mp3" type="audio/mpeg" />
 </audio>
 <p>
               and even tags to display other websites
@@ -109,7 +110,7 @@ const Week0 = () => (
               var b = document.body;
               var c = document.getElementsByTagName('canvas')[0];
               var a = c.getContext('2d');
-              document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218
+              document.body.clientWidth; // fix bug in webkit: https://qfox.nl/weblog/218
               })()
               }
 </script>
@@ -386,7 +387,7 @@ const Week0 = () => (
   <br />but if you would like to read up on them in advance please do.
 </p>
                                   <p>
-                                    <a href="http://www.json.org/">More on Object Notation (JSON)</a>
+                                    <a href="https://www.json.org/">More on Object Notation (JSON)</a>
                                   </p>
                                   <div></div>
                                   <div class="title">
@@ -424,8 +425,8 @@ const Week0 = () => (
   <br />An interactive story that won awards at writing and film festivals.
   <br />It is built entirely in JavaScript.
 </p>
-                                        <a href="http://www.sbs.com.au/theboat/">
-                                          <img src="http://www.sbs.com.au/theboat/images/fb-image.jpg" />
+                                        <a href="https://www.sbs.com.au/theboat/">
+                                          <img src="https://www.sbs.com.au/theboat/images/fb-image.jpg" />
 </a>
                                           <div></div>
                                           <p>
@@ -435,7 +436,7 @@ const Week0 = () => (
   <br />
                                                   <br />The installation was exhibited at various shows around the world,
   <br />but because it's in JavaScript,
-  <a href="http://www.on-broadway.nyc/">it's also available online.</a>
+  <a href="https://www.on-broadway.nyc/">it's also available online.</a>
 </p>
                                                     <iframe class="video" src="https://player.vimeo.com/video/118247767?color=4effaf&title=0&byline=0&portrait=0" frameborder="0"
                                                       webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -450,7 +451,7 @@ const Week0 = () => (
                                                       <p>
                                                         <strong>More (mostly) JavaScript websites</strong>:
   <br />click the big pink "please".</p>
-                                                        <iframe src="http://www.theuselessweb.com/"></iframe>
+                                                        <iframe src="https://www.theuselessweb.com/"></iframe>
                                                         <div></div>
                                                         <hr />
                                                           <footer>
