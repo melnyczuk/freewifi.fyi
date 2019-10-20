@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	margin: 0px;
+	font-family: 'Roboto';
+	padding: 0 !important;
+	background-color: black;
+}
+
+#__next {
+	margin: 0;
+	width: 100%;
+}
+
+#three {
+	width: fit-content;
+	height: 100vh;
+	float: left;
+	margin: auto;
+}
+
+#menu {
+	background: #000000;
+	height: auto;
+	padding-top: 25px;
+	color: #ffffff;
+	margin-right: 25px;
+	margin-left: 25px;
+	width: 28%;
+	right: 0;
+	position: absolute;
+	padding-left: 25px;
+	padding-right: 25px;
+}
