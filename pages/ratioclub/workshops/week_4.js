@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
+import './rt_workshops.css';
+
 const Week4 = () => (
   <>
     <Head>
       <title>RATIO CLUB WEEK 4</title>
-      <link rel="stylesheet" type="text/css" href="/static/ratioclub/rt_workshops.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
     </Head>
     <div class="title">
