@@ -1,2 +1,2 @@
-# [freewifi.fyi](http://freewifi.fyi)
+# [freewifi.fyi](https://freewifi.fyi)
 This is the source code for the free wifi website

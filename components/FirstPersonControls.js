@@ -1,7 +1,7 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
- * @author paulirish / http://paulirish.com/
+ * @author mrdoob / https://mrdoob.com/
+ * @author alteredq / https://alteredqualia.com/
+ * @author paulirish / https://paulirish.com/
  */
 
 import * as THREE from 'three';

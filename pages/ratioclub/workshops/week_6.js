@@ -307,7 +307,7 @@ const Week6 = () => (
   <p>Rotation in Three.js is measured in <strong>Radians</strong> which are all fractions of <strong>Pi</strong>.</p>
   <p>The function
     <strong>THREE.Math.degToRad()</strong> will convert Degrees to Radians.</p>
-  <img src="http://davidscottlyons.com/threejs/presentations/frontporch14/images/unit-circle-radians.png" />
+  <img src="https://davidscottlyons.com/threejs/presentations/frontporch14/images/unit-circle-radians.png" />
   <p>( <span style={{color: 'red'}}>Radians in red</span> )</p>
   <div class="title">
     <h2>Recap</h2>
@@ -359,7 +359,7 @@ const Week6 = () => (
   </div>
   <p>PHEEEEEEW!</p>
   <p>Much credit due to
-    <a href="http://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0">David Scott Lyons</a>
+    <a href="https://davidscottlyons.com/threejs/presentations/frontporch14/#slide-0">David Scott Lyons</a>
   </p>
 
   <div class="title">
